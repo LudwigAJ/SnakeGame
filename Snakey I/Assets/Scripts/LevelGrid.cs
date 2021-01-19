@@ -30,7 +30,7 @@ public class LevelGrid
 
         do
         {
-            foodGridPosition = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
+            foodGridPosition = new Vector2Int(Random.Range(0, width+1), Random.Range(0, height+1));
         } while (snake.GetFullSnakeGridPositionList().IndexOf(foodGridPosition) != -1);
 
         foodGameObject = new GameObject("Food", typeof(SpriteRenderer));
@@ -51,6 +51,27 @@ public class LevelGrid
         {
             return false;
         }
+    }
+
+    public Vector2Int ValidateGridPosition(Vector2Int gridPosition)
+    {
+        if (gridPosition.x < 0)
+        {
+            gridPosition.x = width;
+        }
+        if (gridPosition.y < 0)
+        {
+            gridPosition.y = height;
+        }
+        if (gridPosition.x > width)
+        {
+            gridPosition.x = 0;
+        }
+        if (gridPosition.y > height)
+        {
+            gridPosition.y = 0;
+        }
+        return gridPosition;
     }
 
 }
