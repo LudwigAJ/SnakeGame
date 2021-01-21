@@ -45,6 +45,7 @@ public class LevelGrid
             Object.Destroy(foodGameObject);
             SpawnFood();
             Debug.Log("Snake ate food");
+            GameHandler.AddScore();
             return true;
         }
         else

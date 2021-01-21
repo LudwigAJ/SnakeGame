@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
+
+    private static GameHandler instance;
     [SerializeField] private Snake snake;
     [SerializeField] private LevelGrid levelGrid;
 
+    private static int score;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -14,11 +22,17 @@ public class GameHandler : MonoBehaviour
         levelGrid = new LevelGrid(14, 14);
         snake.Setup(levelGrid);
         levelGrid.Setup(snake);
+        score = 0;
         
     }
-    // Update is called once per frame
-    private void Update()
+
+    public static int GetScore()
     {
-       
+        return score;
+    }
+
+    public static void AddScore()
+    {
+        score += 1;
     }
 }
