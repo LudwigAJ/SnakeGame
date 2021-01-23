@@ -14,6 +14,7 @@ public class GameHandler : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        score = 0;
     }
     // Start is called before the first frame update
     private void Start()
@@ -22,9 +23,11 @@ public class GameHandler : MonoBehaviour
         levelGrid = new LevelGrid(14, 14);
         snake.Setup(levelGrid);
         levelGrid.Setup(snake);
-        score = 0;
+        
         
     }
+
+
 
     public static int GetScore()
     {
@@ -34,5 +37,10 @@ public class GameHandler : MonoBehaviour
     public static void AddScore()
     {
         score += 1;
+    }
+
+    public static void SnakeDidDie()
+    {
+        GameOverWindow.ShowStatic();
     }
 }

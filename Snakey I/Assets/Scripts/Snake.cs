@@ -207,6 +207,7 @@ public class Snake : MonoBehaviour
                      * GAME OVER!
                      */
                     Debug.Log("GAME OVER!");
+                    GameHandler.SnakeDidDie();
                     state = State.Dead;
                 }
             }
@@ -214,6 +215,7 @@ public class Snake : MonoBehaviour
             if (gridPosition == snakeTail.GetGridPosition())
             {
                 Debug.Log("GAME OVER!");
+                GameHandler.SnakeDidDie();
                 state = State.Dead;
             }
 
